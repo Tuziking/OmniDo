@@ -25,9 +25,6 @@ struct AtmosphericProjectView: View {
     @State private var editingTaskContent = ""
     @State private var editingTaskId: UUID?
     
-    // [新增] 视图模式切换
-    @State private var isMindMapView = false
-    
     var body: some View {
         ZStack(alignment: .top) {
             // 1. 全局背景色 (强制纯白，消除割裂感)
@@ -273,15 +270,6 @@ struct AtmosphericProjectView: View {
                 
                 // 右侧：操作区
                 HStack(spacing: 8) {
-                    // [新增] 视图切换按钮
-                    Picker("View Mode", selection: $isMindMapView) {
-                        Image(systemName: "square.grid.3x1.fill.below.line.grid.1x2").tag(false) // Kanban
-                        Image(systemName: "network").tag(true)  // Mind Map
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(width: 100)
-                    .padding(.trailing, 8)
-                    
                     Button(action: {
                         projectToRename = project
                         renameText = project.name
@@ -313,20 +301,14 @@ struct AtmosphericProjectView: View {
             .padding(.horizontal, 24) // [Fix] 统一边距
             .padding(.vertical, 24)
             
-            // 内容区域：看板 或 思维导图
-            if isMindMapView {
-                MindMapView(viewModel: viewModel, projectID: project.id)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                // 看板列区域
-                HStack(alignment: .top, spacing: 16) {
-                    buildColumn(id: "todo", title: "To Do", color: .blue, project: project)
-                    buildColumn(id: "doing", title: "In Progress", color: .orange, project: project)
-                    buildColumn(id: "done", title: "Done", color: .green, project: project)
-                }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 32)
+            // 看板列区域
+            HStack(alignment: .top, spacing: 16) {
+                buildColumn(id: "todo", title: "To Do", color: .blue, project: project)
+                buildColumn(id: "doing", title: "In Progress", color: .orange, project: project)
+                buildColumn(id: "done", title: "Done", color: .green, project: project)
             }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 32)
         }
         .background(Color.white) // [Fix] 确保背景纯白
     }

@@ -20,10 +20,6 @@ struct ProjectTask: Identifiable, Codable {
     var id: UUID = UUID()
     var content: String
     var columnId: String // "todo", "doing", "done"
-    // [新增] 思维导图坐标和子节点
-    var x: Double?
-    var y: Double?
-    var childrenIDs: [UUID]?
 }
 
 struct Project: Identifiable, Codable {
@@ -203,31 +199,6 @@ class PaperDoViewModel: ObservableObject {
         if let pIdx = projects.firstIndex(where: { $0.id == projectID }),
            let tIdx = projects[pIdx].tasks.firstIndex(where: { $0.id == taskID }) {
             projects[pIdx].tasks[tIdx].columnId = toColumn
-        }
-    }
-    
-    // --- 思维导图逻辑 (Mind Map) ---
-    func updateTaskPosition(projectID: UUID, taskID: UUID, x: Double, y: Double) {
-        if let pIdx = projects.firstIndex(where: { $0.id == projectID }),
-           let tIdx = projects[pIdx].tasks.firstIndex(where: { $0.id == taskID }) {
-            projects[pIdx].tasks[tIdx].x = x
-            projects[pIdx].tasks[tIdx].y = y
-        }
-    }
-    
-    func addChildTask(projectID: UUID, parentID: UUID, content: String) {
-        if let pIdx = projects.firstIndex(where: { $0.id == projectID }),
-           let parentIdx = projects[pIdx].tasks.firstIndex(where: { $0.id == parentID }) {
-            
-            // 1. 创建新任务
-            let newTask = ProjectTask(content: content, columnId: "todo", x: (projects[pIdx].tasks[parentIdx].x ?? 0) + 200, y: (projects[pIdx].tasks[parentIdx].y ?? 0))
-            projects[pIdx].tasks.append(newTask)
-            
-            // 2. 关联父节点
-            if projects[pIdx].tasks[parentIdx].childrenIDs == nil {
-                projects[pIdx].tasks[parentIdx].childrenIDs = []
-            }
-            projects[pIdx].tasks[parentIdx].childrenIDs?.append(newTask.id)
         }
     }
     

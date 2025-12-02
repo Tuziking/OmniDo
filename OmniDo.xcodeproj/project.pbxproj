@@ -14,9 +14,23 @@
 		C3B7569A2ED5C34200D2C796 /* OmniDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C3BC014F2EDED3DF0024A33D /* Exceptions for "OmniDo" folder in "OmniDo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Build/OmniDo v0.1.1/OmniDo.app",
+				"Build/OmniDo v0.1/OmniDo.app",
+			);
+			target = C3B756992ED5C34200D2C796 /* OmniDo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C3B7569C2ED5C34200D2C796 /* OmniDo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C3BC014F2EDED3DF0024A33D /* Exceptions for "OmniDo" folder in "OmniDo" target */,
+			);
 			path = OmniDo;
 			sourceTree = "<group>";
 		};

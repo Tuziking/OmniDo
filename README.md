@@ -111,7 +111,7 @@ OmniDo 旨在通过极简的设计语言，帮助你排除干扰，回归专注�
 
 1.  克隆本仓库到本地：
     ```bash
-    git clone [https://github.com/你的用户名/OmniDo.git](https://github.com/你的用户名/OmniDo.git)
+    git clone [https://github.com/Tuziking/OmniDo](https://github.com/Tuziking/OmniDo)
     ```
 2.  在 Xcode 中打开 `OmniDo.xcodeproj` 项目文件。
 3.  等待 Swift Package 依赖加载完成。

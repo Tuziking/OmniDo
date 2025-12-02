@@ -83,6 +83,22 @@ OmniDo 旨在通过极简的设计语言，帮助你排除干扰，回归专注�
 
 ---
 
+## ⚠️ 安装与安全提示
+
+由于本项目是一个开源项目且未加入 Apple Developer Program，macOS 的 Gatekeeper 安全机制可能会拦截应用的运行。这属于正常现象，请按照以下步骤操作：
+
+### 提示“无法验证开发者”
+1. 在`设置`中找到`隐私与安全性`。
+2. 滑到最底部
+3. 在`允许以下来源的应用程序`中选择`App Store和已知开发者`。
+<div align="center">
+  <img src="images/警告.png" alt="沉浸专注模式展示" width="90%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  </div>
+
+<br>
+
+---
+
 ## 🛠️ 系统要求与构建
 
 ### 环境要求
